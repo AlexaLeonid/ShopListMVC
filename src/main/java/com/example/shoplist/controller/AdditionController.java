@@ -7,14 +7,13 @@ import org.springframework.web.servlet.view.RedirectView;
 
 @RestController
 @RequestMapping("/shopList")
-//@RequestMapping("/")
 public class AdditionController {
 
     @Autowired
     ShopListService shopList;
 
     @GetMapping("/add")
-    public RedirectView add(@RequestParam String name){
+    public RedirectView add(@RequestParam(name = "name") String name){
         shopList.addProduct(name);
         return new RedirectView("/shopList/show");
     }

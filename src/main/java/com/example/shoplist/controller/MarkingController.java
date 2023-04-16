@@ -13,8 +13,8 @@ public class MarkingController {
     ShopListService shopList;
 
     @GetMapping("/mark")
-    public RedirectView mark(@RequestParam String name){
-        shopList.markElement(name);
+    public RedirectView mark(@RequestParam(name = "id") Integer id){
+        shopList.markElement(id);
         return new RedirectView("/shopList/show");
     }
 }

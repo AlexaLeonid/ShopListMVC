@@ -24,13 +24,13 @@ public class ShopListService {
         shopList.add(new Product(shopList.size() + 1, name));
     }
 
-    public void deleteProduct(String name){
-        shopList.removeIf(product -> product.getName().equals(name));
+    public void deleteProduct(Integer id){
+        shopList.removeIf(product -> product.getId() == id);
     }
 
-    public void markElement(String name){
+    public void markElement(Integer id){
         for(Product product: shopList){
-            if(product.getName().equals(name)){
+            if(product.getId() == id){
                 product.setBought(!product.isBought());
             }
         }

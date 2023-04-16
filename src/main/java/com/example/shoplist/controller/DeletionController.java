@@ -12,8 +12,8 @@ public class DeletionController {
     ShopListService shopList;
 
     @GetMapping("/delete")
-    public RedirectView delete(@RequestParam String name){
-        shopList.deleteProduct(name);
+    public RedirectView delete(@RequestParam(name = "id") Integer id){
+        shopList.deleteProduct(id);
         return new RedirectView("/shopList/show");
     }
 }

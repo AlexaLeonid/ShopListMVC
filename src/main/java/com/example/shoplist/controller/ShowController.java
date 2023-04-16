@@ -14,8 +14,7 @@ public class ShowController {
     @Autowired
     ShopListService shopList;
 
-  //  @GetMapping("/show")
-    @RequestMapping(value = "/show", method = RequestMethod.GET)
+    @GetMapping("/show")
     public List<Product> show(){
         return shopList.getShopList();
     }
