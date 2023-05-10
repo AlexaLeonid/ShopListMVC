@@ -19,9 +19,6 @@ public class ShopListController {
 
     @GetMapping("/")
     public List<Product> show(){
-       // shopList.addProduct(new Product("milk"));
-
-     //   shopList.addProduct(new Product("peach"));
         return shopList.getShopList();
     }
 
