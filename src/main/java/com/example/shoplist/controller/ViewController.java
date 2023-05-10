@@ -9,7 +9,7 @@ public class ViewController {
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public String list(){
-        return "list";
+        return "index";
     }
 
     @RequestMapping("/add")

@@ -1,13 +1,25 @@
 package com.example.shoplist.model;
 
-public class Product {
+import jakarta.persistence.*;
 
+@Entity
+@Table(name = "products")
+public class Product {
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "is_bought")
     private boolean isBought;
 
-    public Product(int id, String name) {
-        this.id = id;
+    public Product() {
+
+    }
+    public Product(String name) {
+     //   this.id = id;
+
         this.name = name;
         isBought = false;
     }

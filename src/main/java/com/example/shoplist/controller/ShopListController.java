@@ -2,7 +2,10 @@ package com.example.shoplist.controller;
 
 import com.example.shoplist.model.Product;
 import com.example.shoplist.service.ShopListService;
+
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,12 +19,19 @@ public class ShopListController {
 
     @GetMapping("/")
     public List<Product> show(){
+       // shopList.addProduct(new Product("milk"));
+
+     //   shopList.addProduct(new Product("peach"));
         return shopList.getShopList();
     }
 
     @GetMapping("/{id}")
-    public Product getById(@PathVariable("id") Integer id){
-        return shopList.findById(id);
+    public Product getById(@PathVariable("id") Long id, HttpServletResponse response){
+        if(shopList.getProduct(id) == null){
+            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            return null;
+        }
+        return shopList.getProduct(id);
     }
 
     @PostMapping("/add")
@@ -30,12 +40,12 @@ public class ShopListController {
     }
 
     @PutMapping("/{id}")
-    public Product update(@PathVariable(value = "id") Integer id) {
+    public Product update(@PathVariable(value = "id") Long id) {
         return shopList.updateProduct(id);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable("id") Integer id) {
+    public void delete(@PathVariable("id") Long id) {
         shopList.deleteProduct(id);
     }
 }
