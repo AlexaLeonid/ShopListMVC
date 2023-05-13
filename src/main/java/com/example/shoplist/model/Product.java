@@ -1,6 +1,7 @@
 package com.example.shoplist.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.NaturalId;
 
 @Entity
 @Table(name = "products")
@@ -9,6 +10,7 @@ public class Product {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(name = "name")
     private String name;
     @Column(name = "is_bought")
@@ -24,7 +26,7 @@ public class Product {
 
 
     public Long getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Long id) {

@@ -27,14 +27,24 @@ public class ShopListService {
             throw new NotFoundException();
         }
     }
+
+    public boolean getProductByName(String name){
+       List<Product> products = getShopList();
+       for(Product product: products){
+           if(product.getName().equals(name)){
+               return true;
+           }
+       }
+       return false;
+    }
     public List<Product> getShopList(){
 
         return productRepository.findAll();
     }
 
     public Product addProduct(Product product){
-        productRepository.save(product);
-        return product;
+
+        return productRepository.save(product);
     }
     public void deleteProduct(Long id){
         productRepository.deleteById(id);
